@@ -37,6 +37,8 @@ export { default as FormCard } from './FormCard/FormCard'
 
 export { default as NewFormCard } from './NewFormCard/NewFormCard'
 
+export { default as SubscriptionCard }  from './SubscriptionCard/SubscriptionCard'
+
 export { default as PricePlanCard }  from './PricePlanCard/PricePlanCard'
 
 export { default as SupportCard }  from './SupportCard/SupportCard'

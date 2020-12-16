@@ -11,7 +11,7 @@ import {
     Header, 
     Sidebar, 
     ContentHeading,
-    PaymentHistoryTable,
+    SubscriptionCard,
     SupportCard,
 } from '../../components'
 import HeadWrapper from '../Wrapper/HeadWrapper';
@@ -29,24 +29,34 @@ class MySubscription extends React.Component {
                             <Sidebar/>  
                              <ContentBody>
                              <HeadWrapper>
-                                <ContentHeading title={"Enterprise Plan"} subtitle={"My Subscrtiption"}  desc={"Your subscription renews on Oct 28, 2020 (11 months 16 days remaining)"}/>
-                                <div class="nk-block-head-content">
-                                <ul class="nk-block-tools justify-content-md-end g-4 flex-wrap">
-                                                    <li class="order-md-last">
-                                                        <a href="#" class="btn btn-auto btn-dim btn-danger" data-toggle="modal" data-target="#subscription-cancel"><em class="icon ni ni-cross"></em><span>Cancel Subscription</span></a></li>
-                                                    <li>
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" checked="" id="auto-renew"/>
-                                                            <label class="custom-control-label text-soft" for="auto-renew">Auto Renew</label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                </div>
+                                <ContentHeading title={"My Subscription"} subtitle={"Manage Subscription"}  desc={"Here is list of package/product that you have subscribed.)"}/>
+                                        <div class="nk-block-head-content">
+                                            <ul class="nk-block-tools gx-3">
+                                                <li class="order-md-last"><a href="pricing.html" class="btn btn-white btn-dim btn-outline-primary"><span>View Pricing</span></a></li>
+                                            </ul>
+                                        </div>
                                 </HeadWrapper>
                                     <Block>
-                                        <div class="card card-bordered">
-                                            <PaymentHistoryTable/>
-                                        </div>    
+                                        <SubscriptionCard
+                                        title={"Enterprise Plan "}
+                                        status={"Active"}
+                                        id={"100394949"}
+                                        date={"Oct 12, 2018"}
+                                        recuring={"Yes"}
+                                        price={"599.00"}
+                                        access={"Unlimited"}
+                                        dateBill={"Oct 11, 2020"}
+                                        />
+                                         <SubscriptionCard
+                                        title={"Pro Plan"}
+                                        status={"Expired"}
+                                        id={"100142725"}
+                                        date={"Oct 12, 2017"}
+                                        recuring={"Yes"}
+                                        price={"249.00"}
+                                        access={"Up to 10 Members"}
+                                        dateBill={"Oct 11, 2020"}
+                                        />
                                     </Block>
                                     <Block>
                                         <SupportCard/>
