@@ -1,35 +1,36 @@
 import React from 'react';
 import {MenuBottom} from '../'
+import {BrowserRouter as Router, Link} from 'react-router-dom'
 
 
 const MenuItem = [
     {
-        "link" : "",
+        "link" : "/",
         "icon" : `ni-dashboard`,
         "title": "Dashboard"
     },
     {
-        "link" : "",
+        "link" : "my-forms",
         "icon" : `ni-files`,
         "title": "My Forms"
     },
     {
-        "link" : "",
+        "link" : "/my-subscription",
         "icon" : `ni-file-text`,
         "title": "My Subscription"
     },
     {
-        "link" : "",
+        "link" : "/payment-history",
         "icon" : `ni-report-profit`,
         "title": "Payment History"
     },
     {
-        "link" : "",
+        "link" : "/manage-team",
         "icon" : `ni-users`,
         "title": "Manage Team"
     },
     {
-        "link" : "",
+        "link" : "/download",
         "icon" : `ni-download-cloud`,
         "title": "Download"
     },
@@ -44,7 +45,7 @@ const MenuItem = [
 const MenuRow = MenuItem.map((Item) => {
         return (
             <li class="nk-menu-item">
-                <a href={Item.link}class="nk-menu-link">
+                <a href={Item.link} class="nk-menu-link">
                     <span class="nk-menu-icon"><em class={`icon ni ${Item.icon}`}></em></span>
                     <span class="nk-menu-text">{Item.title}</span>
                 </a>
@@ -57,6 +58,7 @@ class Menu extends React.Component {
     render(){
         return (
             <>
+            <Router>
             <ul class="nk-menu">
                 <li class="nk-menu-heading">
                     <h6 class="overline-title">Menu</h6>
@@ -64,6 +66,7 @@ class Menu extends React.Component {
                 {MenuRow}
                 <MenuBottom/>                         
             </ul>
+            </Router>
             </>
         )
     }

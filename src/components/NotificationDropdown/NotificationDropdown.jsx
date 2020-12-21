@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 const Notifications = [
@@ -49,18 +49,18 @@ const NotificationRow = Notifications.map((NotificationElement) => {
 
 
 
-class NotificationDropdown extends React.Component {
-
-    render(){
+const NotificationDropdown = () => {
+    const [isOpen, setOpen] = useState(false)
+  
         return (
             <>
-            <li class="dropdown notification-dropdown">
-                <a href="#" class="dropdown-toggle nk-quick-nav-icon mr-lg-n1" data-toggle="dropdown">
+            <li class="dropdown notification-dropdown ">
+                <a onClick={() => setOpen(!isOpen)} class="dropdown-toggle nk-quick-nav-icon mr-lg-n1" data-toggle="dropdown">
                     <div class="icon-status icon-status-info">
                         <em class="icon ni ni-bell"></em>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1">
+                <div class={`dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1 ${isOpen ? `show` : null}`}>
                     <div class="dropdown-head">
                         <span class="sub-title nk-dropdown-title">
                             Notifications
@@ -83,7 +83,7 @@ class NotificationDropdown extends React.Component {
               </li>
             </>
         )
-    }
+    
 }
     
 

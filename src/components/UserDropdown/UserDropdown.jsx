@@ -1,30 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
-class UserDropdown extends React.Component {
+const UserDropdown = props => {
 
-    render(){
+    const [isOpen, setOpen] = useState(false)
+
         return (
-            <>
+            
             <li class="dropdown user-dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               <a onClick={() => setOpen(!isOpen)} class="dropdown-toggle" data-toggle="dropdown">
                     <div class="user-toggle">
                         <div class="user-avatar sm">
                             <em class="icon ni ni-user-alt"></em>
                         </div>
                         <div class="user-name dropdown-indicator d-none d-sm-block">
-                            {this.props.name}
+                            {props.name}
                         </div>
                     </div>
                 </a>
-                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
+                    <div class={`dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 ${isOpen ? `show` : null}`}>
                         <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                             <div class="user-card">
                                 <div class="user-avatar">
                                     <span>AB</span>
                                 </div>
                                 <div class="user-info">
-                                    <span class="lead-text">{this.props.name}</span>
+                                    <span class="lead-text">{props.name}</span>
                                     <span class="sub-text">hello@hoops.com.tr</span>
                                 </div>
                                 <div class="user-action">
@@ -47,9 +48,9 @@ class UserDropdown extends React.Component {
                                 </div>
                     </div>
                  </li>
-                </>
+                
         )
-    }
+   
 }
     
 

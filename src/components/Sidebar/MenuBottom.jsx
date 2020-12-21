@@ -17,28 +17,28 @@ class MenuBottom extends React.Component {
                 </a>
                 <ul class="nk-menu-sub">
                     <li class="nk-menu-item">
-                        <a href="pricing.html" class="nk-menu-link">
+                        <a href="/pricing" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Pricing
                             </span>
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="invoices.html" class="nk-menu-link">
+                        <a href="/invoices" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Invoices <span class="count">(2)</span>
                             </span>
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="tickets.html" class="nk-menu-link">
+                        <a href="/tickets" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Tickets <span class="count">(5)</span>
                             </span>
                         </a>
                         </li>
                     <li class="nk-menu-item">
-                        <a href="subscriptions-detail.html" class="nk-menu-link">
+                        <a href="/subscription-detail" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Subscription Details
                             </span>

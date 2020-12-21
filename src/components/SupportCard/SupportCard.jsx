@@ -13,7 +13,7 @@ class SupportCard extends React.Component {
                     </div>
                     <div class="nk-help-text">
                         <h5>We’re here to help you!</h5>
-                        <p class="text-soft">Ask a question or file a support ticketn or report an issues. Our team support team will get back to you by email.</p>
+                        <p class="text-soft">Ask a question or file a support ticket or report an issues. Our team support team will get back to you by email.</p>
                     </div>
                     <div class="nk-help-action">
                         <a href="contact.html" class="btn btn-lg btn-outline-primary">Get Support Now</a>

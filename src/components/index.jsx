@@ -43,6 +43,30 @@ export { default as PricePlanCard }  from './PricePlanCard/PricePlanCard'
 
 export { default as SupportCard }  from './SupportCard/SupportCard'
 
+export { default as DownloadCard }  from './DownloadCard/DownloadCard'
+
 export { default as PaymentHistoryTable }  from './PaymentHistoryTable/PaymentHistoryTable'
+
+export { default as TeamTable }  from './TeamTable/TeamTable'
+
+export { default as ProfileTopNavbar }  from './ProfileTopNavbar/ProfileTopNavbar'
+
+export { default as PricingCard }  from './PricingCard/PricingCard'
+
+export { default as PricingTable }  from './PricingTable/PricingTable'
+
+export { default as PaymentCard }  from './PaymentCard/PaymentCard'
+
+export { default as InvoiceTable }  from './InvoiceTable/InvoiceTable'
+
+export { default as TicketTable }  from './TicketTable/TicketTable'
+
+export { default as TicketMessage }  from './Ticket/TicketMessage'
+export { default as Editor }  from './Ticket/Editor'
+
+
+
+
+
 
 
