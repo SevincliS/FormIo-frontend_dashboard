@@ -27,7 +27,7 @@ class Settings extends React.Component {
                                 <ul class="align-center gx-3">
                                     <li class="order-md-last">
                                         <div class="custom-control custom-switch mr-n2">
-                                            <input type="checkbox" class="custom-control-input" checked="" id="activity-log"/>
+                                            <input type="checkbox" class="custom-control-input"  id="activity-log"/>
                                             <label class="custom-control-label" for="activity-log"></label>
                                         </div>
                                     </li>

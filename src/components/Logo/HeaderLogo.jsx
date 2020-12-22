@@ -8,7 +8,7 @@ class HeaderLogo extends React.Component {
     render(){
         return (
             <div class="nk-header-brand">
-            <a href="index.html" class="logo-link">
+            <a class="logo-link">
                 <img class="logo-light logo-img" src={BrandLogo} srcset={BrandLogo} alt="logo"/>
                 <img class="logo-dark logo-img" src={BrandLogo} srcset={BrandLogo} alt="logo-dark"/>
             </a>

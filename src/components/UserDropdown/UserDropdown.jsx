@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {NavLink} from 'react-router-dom'
 
 
 const UserDropdown = props => {
@@ -35,10 +36,29 @@ const UserDropdown = props => {
                             </div>
                                 <div class="dropdown-inner">
                                     <ul class="link-list">
-                                        <li><a href="profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                        <li><a href="profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                                        <li><a href="profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                                        <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                        <li>
+                                            <NavLink to="/my-profile" exact={true} >
+                                            <em class="icon ni ni-user-alt"></em><span>View Profile</span>
+                                            </NavLink>
+                                        </li>
+
+                                        <li>
+                                        <NavLink to="/my-profile/settings" exact={true} >
+                                            <em class="icon ni ni-setting-alt"></em><span>Account Setting</span>
+                                        </NavLink>
+                                            </li>
+                                        <li>
+                                        <NavLink to="/my-profile/settings" exact={true} >
+                                            <em class="icon ni ni-activity-alt"></em><span>Login Activity</span>
+                                        
+                                        </NavLink>
+                                        </li>
+                                        <li>
+                                        <NavLink className="dark-switch" to="/my-profile" exact={true} >
+                                            <em class="icon ni ni-moon"></em><span>Dark Mode</span>
+                                            
+                                        </NavLink>
+                                            </li>
                                     </ul>
                                 </div>
                                 <div class="dropdown-inner">

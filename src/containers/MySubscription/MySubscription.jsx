@@ -15,6 +15,7 @@ import {
     SupportCard,
 } from '../../components'
 import HeadWrapper from '../Wrapper/HeadWrapper';
+import {Link} from 'react-router-dom'
 
 
 
@@ -31,10 +32,12 @@ class MySubscription extends React.Component {
                              <HeadWrapper>
                                 <ContentHeading title={"My Subscription"} subtitle={"Manage Subscription"}  desc={"Here is list of package/product that you have subscribed.)"}/>
                                         <div class="nk-block-head-content">
+                                            <Link to="/pricing">
                                             <ul class="nk-block-tools gx-3">
-                                                <li class="order-md-last"><a href="pricing.html" class="btn btn-white btn-dim btn-outline-primary"><span>View Pricing</span></a></li>
+                                                <li class="order-md-last"><a href="" class="btn btn-white btn-dim btn-outline-primary"><span>View Pricing</span></a></li>
                                             </ul>
-                                        </div>
+                                            </Link>
+                                        </div>  
                                 </HeadWrapper>
                                     <Block>
                                         <SubscriptionCard

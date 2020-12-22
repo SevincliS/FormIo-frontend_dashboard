@@ -1,5 +1,6 @@
 import React from 'react';
 import {UserDropdown,NotificationDropdown,HeaderLogo} from '../'
+import {Link} from 'react-router-dom'
 
 class Header extends React.Component {
 
@@ -9,7 +10,9 @@ class Header extends React.Component {
             <div class="nk-header nk-header-fixed is-light">
                 <div class="container-lg wide-xl">
                     <div class="nk-header-wrap">
+                        <Link to="/">
                                 <HeaderLogo/>
+                        </Link>
                         <div class="nk-header-tools">
                             <ul class="nk-quick-nav">
                                 <UserDropdown name={"Barış Biber"}/>

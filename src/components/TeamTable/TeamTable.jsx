@@ -1,7 +1,13 @@
 import React from 'react';
-
+import {InputLabel, Select, MenuItem} from '@material-ui/core'
 
 const TeamMember = [
+    {
+        "id":"BB",
+        "name": "Barış Biber",
+        "mail" : "barisbiber@gmail.com",
+        "permission" : "Owner",
+    },
     {
         "id":"JF",
         "name": "Joseph Figueroa",
@@ -59,7 +65,7 @@ const TeamMemberRow = TeamMember.map((Member) => {
         <tr class="tb-member-item">
         <td class="tb-member-info">
             <div class="user-card">
-                <div class="user-avatar bg-success">
+                <div class={`user-avatar ${Member.permission == "Member" ? "bg-primary" : Member.permission == "Admin" ? "bg-success" : Member.permission == "Owner" ? "bg-dark" : "bg-warning"  } `}>
                     <span>{Member.id}</span>
                 </div>
                 <div class="user-info">
@@ -73,11 +79,11 @@ const TeamMemberRow = TeamMember.map((Member) => {
         </td>
         <td class="tb-member-role tb-col-md">
             <div class="form">
-                <select class="form-select" data-search="off" data-ui="clean">
-                    <option value="superadmin">Super Admin</option>
-                    <option value="admin">Admin</option>
-                    <option value="manager">Manager</option>
-                </select>
+                <Select variant={"outlined"} labelId="label" id="select" value="SuperAdmin">
+                <MenuItem value="SuperAdmin">SuperAdmin</MenuItem>
+                <MenuItem value="Admin">Admin</MenuItem>
+                <MenuItem value="Manager">Manager</MenuItem>
+                </Select>
             </div>
         </td>
         <td class="tb-member-action">

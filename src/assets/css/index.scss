@@ -1,3 +1,11 @@
 .slick-dots {
     display: flex !important;
 }
+
+.isActive a, .isActive span{
+    color: #7f8dff !important;
+}
+
+.logo-img {
+    max-height: 50px !important;
+}

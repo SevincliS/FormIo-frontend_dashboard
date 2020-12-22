@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 
 const Invoices = [
     {
@@ -7,48 +7,64 @@ const Invoices = [
         "date": "23 Jan 2019, 10:45pm",
         "amount": "2300.00",
         "status": "Complete",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "546H74W",
         "date": "12 Jan 2020, 10:45pm",
         "amount": "120.00",
         "status": "Pending",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "87X6A44",
         "date": "26 Dec 2019, 12:15 pm",
         "amount": "560.00",
         "status": "Complete",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "986G531",
         "date": "21 Jan 2019, 6 :12 am",
         "amount": "3654.00",
         "status": "Cancelled",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "326T4M9",
         "date": "21 Jan 2019, 6 :12 am",
         "amount": "200.00",
         "status": "Complete",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "746F5K2",
         "date": "23 Jan 2019, 10:45pm",
         "amount": "2300.00",
         "status": "Complete",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "546H74W",
         "date": "12 Jan 2020, 10:45pm",
         "amount": "120.00",
         "status": "Pending",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
     {
         "id": "87X6A44",
         "date": "26 Dec 2019, 12:15 pm",
         "amount": "560.00",
         "status": "Complete",
+        "link" : "/invoice-detail",
+        "printLink":"/invoice-print",
     },
 ]
 
@@ -57,8 +73,10 @@ const InvoicesRow = Invoices.map((invoice) => {
     return (
         <tr class="tb-odr-item">
             <td class="tb-odr-info">
-                     <span class="tb-odr-id"><a href="html/subscription/invoice-details.html">#{invoice.id}</a></span>
+                <Link to={invoice.link}>
+                     <span class="tb-odr-id"><a href="">#{invoice.id}</a></span>
                 <span class="tb-odr-date">{invoice.date}</span>
+                </Link>
             </td>
             <td class="tb-odr-amount">
                 <span class="tb-odr-total">
@@ -70,10 +88,14 @@ const InvoicesRow = Invoices.map((invoice) => {
             </td>
             <td class="tb-odr-action">
                 <div class="tb-odr-btns d-none d-sm-inline">
-                    <a href="invoice-print.html" target="_blank" class="btn btn-icon btn-white btn-dim btn-sm btn-primary"><em class="icon ni ni-printer-fill"></em></a>
-                    <a href="invoice-details.html" class="btn btn-dim btn-sm btn-primary">View</a>
+                    <Link to={invoice.printLink}>
+                    <a href="" target="_blank" class="btn btn-icon btn-white btn-dim btn-sm btn-primary"><em class="icon ni ni-printer-fill"></em></a>
+                    </Link>
+                    <Link to={invoice.link}>
+                    <a href="" class="btn btn-dim btn-sm btn-primary">View</a>
+                    </Link>
                 </div>
-                <a href="invoice-details.html" class="btn btn-pd-auto d-sm-none"><em class="icon ni ni-chevron-right"></em></a>
+                <a href="" class="btn btn-pd-auto d-sm-none"><em class="icon ni ni-chevron-right"></em></a>
             </td>
         </tr>
     )

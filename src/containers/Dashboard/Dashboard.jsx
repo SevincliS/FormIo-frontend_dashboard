@@ -47,6 +47,7 @@ class Dashboard extends React.Component {
                                                 title={"Personal Info"}
                                                 desc={"See your profile data and manage your Account to choose what is saved in our system."}
                                                 navtitle={"Manage Your Account"}
+                                                link={"/my-profile"}
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -56,6 +57,7 @@ class Dashboard extends React.Component {
                                                 title={"Security Setting"}
                                                 desc={"You have full control to manage your own account and keep account fully secure."}
                                                 navtitle={"Account Setting"}
+                                                link={"/my-profile/settings"}
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -65,6 +67,8 @@ class Dashboard extends React.Component {
                                                 title={"Billing History"}
                                                 desc={"Check out all your payment history. You can also download or print your invoice."}
                                                 navtitle={"Payment History"}
+                                                link={"/my-profile/billing"}
+
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -74,6 +78,8 @@ class Dashboard extends React.Component {
                                                 title={"Account Reports"}
                                                 desc={"Check your reports of uses and manage your packages or subscriptions that you have."}
                                                 navtitle={"Manage Subscription"}
+                                                link={"/my-subscription"}
+
                                                 />
                                             </div>
                                         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 class PricePlanCard extends React.Component {
 
@@ -20,9 +21,9 @@ class PricePlanCard extends React.Component {
                                 </p>
                             </div>
                             <div class="nk-block-actions flex-shrink-0">
-                                <a href="subscriptions-detail.html" class="btn btn-primary">
+                                <NavLink to="/pricing" className="btn btn-primary">
                                     View Plan
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

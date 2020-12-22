@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 
 class NavCard extends React.Component {
@@ -21,12 +22,12 @@ class NavCard extends React.Component {
                             </div>
                         </div>
                         <div class="nk-wg1-action">
-                                <a href="profile.html" class="link">
+                                <NavLink to={this.props.link} className="link">
                                     <span>
                                         {this.props.navtitle}
                                     </span> 
                                     <em class="icon ni ni-chevron-right"></em>
-                                </a>
+                                </NavLink>
                         </div>
                     </div>
                 </div>

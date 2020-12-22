@@ -64,6 +64,7 @@ export { default as TicketTable }  from './TicketTable/TicketTable'
 export { default as TicketMessage }  from './Ticket/TicketMessage'
 export { default as Editor }  from './Ticket/Editor'
 
+export { default as Invoice}  from './Invoice/Invoice'
 
 
 

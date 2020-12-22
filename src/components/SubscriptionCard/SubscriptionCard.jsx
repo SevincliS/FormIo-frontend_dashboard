@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 class SubscriptionCard extends React.Component {
 
@@ -11,14 +12,14 @@ class SubscriptionCard extends React.Component {
                         <div class="row gx-0 gy-3">
                             <div class="col-xl-9 col-sm-8">
                                 <div class="sp-plan-name">
-                                    <h6 class="title"><a href="html/subscription/subscriptions-detail.html">{this.props.title} <span class="badge badge-success badge-pill">{this.props.status}</span></a></h6>
+                                    <h6 class="title"><NavLink to="/subscription-detail">{this.props.title} <span class={`badge badge-pill ${this.props.status === "Active" ? "badge-success" : "badge-light" }`}>{this.props.status}</span></NavLink></h6>
                                     <p>Subscription ID: <span class="text-base">{this.props.id}</span></p>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-sm-4">
                                 <div class="sp-plan-opt">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="auto-plan-p1" checked/>
+                                        <input type="checkbox" class="custom-control-input" id="auto-plan-p1" />
                                         <label class="custom-control-label text-soft" for="auto-plan-p1">Auto Renew</label>
                                     </div>
                                 </div>

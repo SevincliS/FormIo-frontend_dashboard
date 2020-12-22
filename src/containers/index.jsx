@@ -18,6 +18,8 @@ export { default as Invoices }  from './Invoices/Invoices'
 export { default as Tickets }  from './Tickets/Tickets'
 export { default as TicketDetail }  from './TicketDetail/TicketDetail'
 export { default as CreateForm }  from './CreateForm/CreateForm'
+export { default as InvoiceDetail }  from './InvoiceDetail/InvoiceDetail'
+export { default as InvoicePrint }  from './InvoicePrint/InvoicePrint'
 
 export { default as MyProfile }  from './MyProfile/MyProfile'
 export { default as Personal }  from './MyProfile/Personal'

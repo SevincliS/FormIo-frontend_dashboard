@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {MenuBottom} from '../'
-import {BrowserRouter as Router, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const MenuItem = [
@@ -35,30 +35,30 @@ const MenuItem = [
         "title": "Download"
     },
     {
-        "link" : "",
+        "link" : "/my-profile/settings",
         "icon" : `ni-account-setting`,
         "title": "Account Setting"
     },
 ]
 
 
-const MenuRow = MenuItem.map((Item) => {
-        return (
-            <li class="nk-menu-item">
-                <a href={Item.link} class="nk-menu-link">
+const MenuRow = MenuItem.map((Item, props) => {
+        return (      
+            <li class={`nk-menu-item`}>
+                <NavLink className="nk-menu-link" exact={true} activeClassName={"isActive"} to={Item.link} >
+           
                     <span class="nk-menu-icon"><em class={`icon ni ${Item.icon}`}></em></span>
                     <span class="nk-menu-text">{Item.title}</span>
-                </a>
+             
+            </NavLink>
             </li>
         )
 }) 
 
-class Menu extends React.Component {
-
-    render(){
+const Menu = props => { 
+    const [isActive, setActive]= useState("dashboard")
         return (
             <>
-            <Router>
             <ul class="nk-menu">
                 <li class="nk-menu-heading">
                     <h6 class="overline-title">Menu</h6>
@@ -66,10 +66,9 @@ class Menu extends React.Component {
                 {MenuRow}
                 <MenuBottom/>                         
             </ul>
-            </Router>
             </>
         )
-    }
+
 }
     
 

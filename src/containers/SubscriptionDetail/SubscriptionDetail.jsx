@@ -17,6 +17,7 @@ import {
     PaymentHistoryTable,
 } from '../../components'
 import HeadWrapper from '../Wrapper/HeadWrapper';
+import {Link} from 'react-router-dom'
 
 
 
@@ -31,7 +32,15 @@ class SubscriptionDetail extends React.Component {
                             <Sidebar/>  
                              <ContentBody>
                              <HeadWrapper>
-                                <ContentHeading title={"Enterprise Plan"} subtitle={<a class="back-to" href="html/subscription/subscriptions.html"><em class="icon ni ni-arrow-left"></em><span>Subscription</span></a>}  desc={"Your subscription renews on Oct 28, 2020 (11 months 16 days remaining)"}/>
+                                <ContentHeading 
+                                title={"Enterprise Plan"} 
+                                subtitle={
+                                <Link to="/my-subscription">
+                                <a class="back-to" href="html/subscription/subscriptions.html"><em class="icon ni ni-arrow-left"></em><span>My Subscription</span>
+                                </a>
+                                </Link>
+                                }  
+                                desc={"Your subscription renews on Oct 28, 2020 (11 months 16 days remaining)"}/>
                                 <div class="nk-block-head-content">
                                                 <ul class="nk-block-tools justify-content-md-end g-4 flex-wrap">
                                                     <li class="order-md-last">

@@ -17,6 +17,8 @@ import  {
   Tickets,
   TicketDetail,
   CreateForm,
+  InvoiceDetail,
+  InvoicePrint,
 } from './containers'
 import '../src/assets/theme-assets/css/dashlite.css'
 import '../src/assets/theme-assets/css/theme.css'
@@ -33,7 +35,24 @@ class Index extends React.Component {
             <Dashboard/>
           </Route>
           <Route exact path="/my-profile">
-            <MyProfile/>
+            <MyProfile
+            subpage="Personal"
+            />
+          </Route>
+          <Route exact path="/my-profile/billing">
+            <MyProfile
+            subpage="Billing"
+            />
+          </Route>
+          <Route exact path="/my-profile/settings">
+            <MyProfile
+            subpage="Settings"
+            />
+          </Route>
+          <Route exact path="/my-profile/notifications">
+            <MyProfile
+            subpage="Notification"
+            />
           </Route>
           <Route exact path="/my-subscription">
             <MySubscription/>
@@ -61,6 +80,25 @@ class Index extends React.Component {
           </Route>
           <Route exact path="/subscription-detail">
             <SubscriptionDetail/>
+          </Route>
+          <Route exact path="/create-form">
+            <CreateForm/>
+          </Route>
+          <Route exact path="/ticket-detail">
+            <TicketDetail/>
+          </Route>
+          <Route exact path="/invoice-detail">
+            <InvoiceDetail/>
+          </Route>
+          <Route exact path="/invoice-print">
+            <InvoicePrint/>
+          </Route>
+
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+          <Route exact path="/register">
+            <Register/>
           </Route>
 
         </Switch>

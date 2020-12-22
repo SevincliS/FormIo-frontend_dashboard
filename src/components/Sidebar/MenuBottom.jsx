@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {NavLink} from 'react-router-dom'
 
 
 class MenuBottom extends React.Component {
@@ -11,39 +11,43 @@ class MenuBottom extends React.Component {
                 <h6 class="overline-title">See Others</h6>
             </li>
             <li class="nk-menu-item">
-                <a href="#" class="nk-menu-link">
-                    <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
-                    <span class="nk-menu-text">Pre-Built Pages</span>
-                </a>
                 <ul class="nk-menu-sub">
+                <NavLink exact={true} activeClassName="isActive" to="/pricing">
                     <li class="nk-menu-item">
-                        <a href="/pricing" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Pricing
                             </span>
                         </a>
                     </li>
+                </NavLink>
+                <NavLink exact={true} activeClassName="isActive" to="/invoices">
                     <li class="nk-menu-item">
-                        <a href="/invoices" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Invoices <span class="count">(2)</span>
                             </span>
                         </a>
                     </li>
+                    </NavLink>
+                    <NavLink exact={true} activeClassName="isActive" to="/tickets">
                     <li class="nk-menu-item">
-                        <a href="/tickets" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Tickets <span class="count">(5)</span>
                             </span>
                         </a>
                         </li>
+                        </NavLink>
+                        <NavLink exact={true} activeClassName="isActive" to="/subscription-detail">
                     <li class="nk-menu-item">
-                        <a href="/subscription-detail" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-text">
                                 Subscription Details
                             </span>
                         </a>
                     </li>
+                    </NavLink>
                 </ul>
             </li>
             </>

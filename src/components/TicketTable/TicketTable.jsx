@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 
 const Tickets = [
@@ -9,7 +10,8 @@ const Tickets = [
         "lastSeen": "27 Jan 2020 10:20am",
         "status": "Open",
         "isUnread": true,
-        "lastSeenTrack" : "Support Team" 
+        "lastSeenTrack" : "Support Team",
+        "link": "/ticket-detail" 
     },
     {
         "id": "C503095",
@@ -18,7 +20,8 @@ const Tickets = [
         "lastSeen": "04 Dec 2019 04:45pm",
         "status": "Close",
         "isUnread": false,
-        "lastSeenTrack" : "User" 
+        "lastSeenTrack" : "User",
+        "link": "/ticket-detail" 
     },
     {
         "id": "C502049",
@@ -27,7 +30,8 @@ const Tickets = [
         "lastSeen": "04 Nov 2019 04:45pm",
         "status": "Open",
         "isUnread": false,
-        "lastSeenTrack" : "User" 
+        "lastSeenTrack" : "User",
+        "link": "/ticket-detail"  
     },
     {
         "id": "C502035",
@@ -36,7 +40,8 @@ const Tickets = [
         "lastSeen": "21 Oct 2019 04:45pm",
         "status": "Close",
         "isUnread": false,
-        "lastSeenTrack" : "Support Team" 
+        "lastSeenTrack" : "Support Team",
+        "link": "/ticket-detail"  
     },
     {
         "id": "C501783",
@@ -45,7 +50,8 @@ const Tickets = [
         "lastSeen": "07 Feb 2020 02:28pm",
         "status": "Open",
         "isUnread": true,
-        "lastSeenTrack" : "User" 
+        "lastSeenTrack" : "User",
+        "link": "/ticket-detail"  
     },
     {
         "id": "C501624",
@@ -54,7 +60,8 @@ const Tickets = [
         "lastSeen": "04 Oct 2019 04:15pm",
         "status": "Open",
         "isUnread": false,
-        "lastSeenTrack" : "Technical Team" 
+        "lastSeenTrack" : "Technical Team",
+        "link": "/ticket-detail"  
     },
     {
         "id": "C501605",
@@ -63,7 +70,8 @@ const Tickets = [
         "lastSeen": "01 Oct 2019 02:29am",
         "status": "Close",
         "isUnread": false,
-        "lastSeenTrack" : "Support Team"  
+        "lastSeenTrack" : "Support Team",
+        "link": "/ticket-detail"   
     },
     {
         "id": "C501579",
@@ -72,7 +80,8 @@ const Tickets = [
         "lastSeen": "29 Sep 2019 06:17am",
         "status": "Close",
         "isUnread": false,
-        "lastSeenTrack" : "Technical Team" 
+        "lastSeenTrack" : "Technical Team",
+        "link": "/ticket-detail"  
     },
 
 ]
@@ -80,10 +89,17 @@ const Tickets = [
 
 const TicketsRow = Tickets.map((ticket) => {
     return (
+        
         <tr class={`tb-ticket-item ${ticket.isUnread ? `is-unread` : null}`}>
-        <td class="tb-ticket-id"><a href="ticket-details.html">{ticket.id}</a></td>
+        <td class="tb-ticket-id">
+        <Link to={ticket.link}>
+            <a href="">{ticket.id}</a>
+        </Link>
+            </td>
         <td class="tb-ticket-desc">
-            <a href="html/subscription/ticket-details.html"><span class="title">{ticket.subject}</span></a>
+        <Link to={ticket.link}>
+            <a href=""><span class="title">{ticket.subject}</span></a>
+        </Link>
         </td>
         <td class="tb-ticket-date tb-col-md">
             <span class="date">{ticket.date}</span>
@@ -94,12 +110,16 @@ const TicketsRow = Tickets.map((ticket) => {
         <td class="tb-ticket-status">
             <span class={`badge ${ticket.status === "Open" ? `badge-success` : `badge-light`}`}>{ticket.status}</span>
         </td>
+        <Link to={ticket.link}>
         <td class="tb-ticket-action">
-            <a href="html/subscription/ticket-details.html" class="btn btn-icon btn-trigger">
+            <a href="" class="btn btn-icon btn-trigger">
                 <em class="icon ni ni-chevron-right"></em>
             </a>
         </td>
+        </Link>
     </tr>
+    
+    
     )
 
 })

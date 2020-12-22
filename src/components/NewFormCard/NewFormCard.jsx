@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 
 class NewFormCard extends React.Component {
 
@@ -11,7 +11,9 @@ class NewFormCard extends React.Component {
                     <div class="team">
                         <div class="user-card user-card-s2">
                             <div class="user-info">
-                                <a href="create-form.html" class="btn btn-lg btn-outline-primary">+</a>  
+                                <Link to="/create-form">
+                                <a class="btn btn-lg btn-outline-primary">+</a>
+                                </Link>  
                             </div>
                         </div>
                     </div>

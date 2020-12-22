@@ -15,6 +15,7 @@ import {
     Editor,
 } from '../../components'
 import HeadWrapper from '../Wrapper/HeadWrapper';
+import {Link} from 'react-router-dom'
 
 
 
@@ -31,7 +32,11 @@ class TicketDetail extends React.Component {
                              <HeadWrapper>
                                 <ContentHeading 
                                 title={"Request for approve payment"} 
-                                subtitle={<a class="back-to" href="html/subscription/tickets.html"><em class="icon ni ni-arrow-left"></em><span>My Tickets</span></a>}  
+                                subtitle={
+                                <Link to="/tickets">
+                                    <a class="back-to" href=""><em class="icon ni ni-arrow-left"></em><span>My Tickets</span></a>
+                                </Link>
+                            }  
                                         />
                                 </HeadWrapper>
                                 <Block>
