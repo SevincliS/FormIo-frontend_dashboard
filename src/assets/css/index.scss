@@ -1,3 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap');
+@font-face {
+    font-family: 'Menlo Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Menlo Regular'), url('../font/Menlo-Regular.woff') format('woff');
+    }
+
+
+.document-wrapper{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: #e3e6eb;
+}
+
+.side-nav {
+    width: 25vw;
+    height: 100%;
+    background: #e3e6eb;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4vh 5vw;
+}
+
+
+
+.doc-content {
+    width: 75vw;
+    height: 100%;
+    min-height: 100vh;
+    background: white;
+    padding: 12vh 10vw;
+}
+
+.doc-content h1 {
+    font-size: 2.4em;
+    font-weight: 800;
+}
+
+.doc-content h2 {
+    font-size: 1.6em;
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.doc-content h3 {
+    font-size: 1.3em;
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.doc-content > .text {
+    margin-top: 20px;
+    max-width: 800px;
+    font-size: 1.2em;
+    letter-spacing: 0.02em;
+}
+
+.doc-content img {
+    max-width: 800px;
+    transition: border 0.3s ease;
+    border: 2px solid white;
+}
+
+.doc-content img:hover {
+    border: 2px solid #0339A6;
+}
+
+.code-card {
+    max-width: 800px;
+    border: 1px solid #dfdfdf;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 20px 30px;
+    font-family: 'Menlo Regular', sans-serif;
+}
+
+.code-card p{
+    line-height: 10px;
+    font-size: 1.1em;
+}
+
+.code-card span {
+    color:#0339A6;
+}
+
+.code-card > .bold {
+    color:  #6c778b;
+} 
+
+.code-card > .soft {
+    color: #adadad;
+} 
+
+
+.side-menu-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.side-menu-row a {
+    font-size: 1.2em;
+    line-height: 30px;
+    margin: 10px 0px;
+}
+
+.side-menu-row:not(:nth-child(2)){
+    margin-top: 5vh;
+}
+
+.side-menu-row h2 {
+    font-size: 1em;
+    font-weight: 700;
+    color: #abb0b9;
+}
+
+.side-menu-row a {
+    color: #162B54;
+}
+
+
 .slick-dots {
     display: flex !important;
 }
@@ -7,5 +134,72 @@
 }
 
 .logo-img {
-    max-height: 50px !important;
+    max-height: 65px !important;
+}
+
+.shadow-box {
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content-active {
+    animation: sideMenu 0.5s ease ;
+}
+
+.nk-block {
+    animation: contentShow 0.5s ease ;
+}
+
+.dropdown-menu {
+    animation: dropdown 0.5s ease ;
+}
+
+
+@keyframes sideMenu {
+    from {
+        transform: translateX(-300px);
+    }
+    
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes contentShow {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes dropdown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 991px) and (min-width: 400px) {
+    .nk-aside {
+        padding-top:  100px !important;
+    }
+
+    .header-link {
+        padding: 1em !important;
+    }
 }

@@ -26,6 +26,8 @@ import {
     
 } from '../../assets/icon/icon'
 
+import {NavLink} from 'react-router-dom'
+
 
 class Dashboard extends React.Component {
 
@@ -103,11 +105,11 @@ class Dashboard extends React.Component {
                                                     Payment History
                                                 </h6>
                                                 <div class="card-action">
-                                                        <a href="payments.html" class="link link-sm">
+                                                        <NavLink to="/payment-history" className="link link-sm">
                                                          See All
-                                                        <em class="icon ni ni-chevron-right">
-                                                        </em>
-                                                    </a>
+                                                        <em class="icon ni ni-chevron-right"></em>
+                                                        </NavLink>
+                                                    
                                                 </div>
                                             </div>
                                         </div>

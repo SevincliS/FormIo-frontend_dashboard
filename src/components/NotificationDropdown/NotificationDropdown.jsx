@@ -81,6 +81,7 @@ const NotificationDropdown = () => {
                     </div>
                 </div>
               </li>
+              {isOpen ? <div onClick={() => setOpen(!isOpen) } className="shadow-box"></div>  : null }
             </>
         )
     

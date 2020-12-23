@@ -1,11 +1,12 @@
 import React from 'react';
 import {Menu} from '../'
+import {useSelector} from 'react-redux'
+import {menuActive} from '../../redux/actions'
 
-class Sidebar extends React.Component {
-
-    render(){
+const Sidebar = () => {
+const toggleMenu = useSelector(state => state.toggleMenu)
         return (
-            <div className="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
+            <div className={`nk-aside  ${ toggleMenu ?  `content-active` : null}`} data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                 <div class="nk-sidebar-menu" data-simplebar>
                     <Menu/>
                 </div>
@@ -16,7 +17,7 @@ class Sidebar extends React.Component {
             
             
         )
-    }
+  
 }
     
 

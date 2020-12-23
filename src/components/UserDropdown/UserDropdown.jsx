@@ -7,7 +7,7 @@ const UserDropdown = props => {
     const [isOpen, setOpen] = useState(false)
 
         return (
-            
+            <>
             <li class="dropdown user-dropdown">
                <a onClick={() => setOpen(!isOpen)} class="dropdown-toggle" data-toggle="dropdown">
                     <div class="user-toggle">
@@ -68,7 +68,10 @@ const UserDropdown = props => {
                                 </div>
                     </div>
                  </li>
-                
+                 {isOpen ? <div onClick={() => setOpen(!isOpen) } className="shadow-box"></div>  : null }
+                 
+            
+               </> 
         )
    
 }
