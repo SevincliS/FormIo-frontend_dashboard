@@ -28,6 +28,8 @@
 
 
 
+
+
 .doc-content {
     width: 75vw;
     height: 100%;
@@ -62,6 +64,7 @@
 
 .doc-content img {
     max-width: 800px;
+    width: 100%;
     transition: border 0.3s ease;
     border: 2px solid white;
 }
@@ -72,16 +75,19 @@
 
 .code-card {
     max-width: 800px;
+    width: 100%;
     border: 1px solid #dfdfdf;
     margin-top: 50px;
     border-radius: 10px;
     padding: 20px 30px;
     font-family: 'Menlo Regular', sans-serif;
+    overflow: scroll;
 }
 
 .code-card p{
     line-height: 10px;
     font-size: 1.1em;
+    min-width: 800px;
 }
 
 .code-card span {
@@ -193,13 +199,88 @@
     }
 }
 
+.mobile-header {
+    display: none;
+}
+
 
 @media (max-width: 991px) and (min-width: 400px) {
+
     .nk-aside {
         padding-top:  100px !important;
     }
 
     .header-link {
         padding: 1em !important;
+    }
+
+    .side-nav{
+        display: none;
+    }
+   
+    .side-nav-mobile{
+        left: 0;
+        z-index: 1;
+        display: flex;
+        position: absolute;
+        width: 40vw;
+        min-width: 200px;
+        height: 250vh;
+        animation: docSideNav 0.5s ease;
+        // transform: translateX(-30vw);
+        box-shadow: 6px 0px 20px rgba($color: #b4b4b4, $alpha: 0.5);
+    }
+
+
+    .doc-content{
+        width: 100vw;
+       
+    }
+
+    .mobile-header {
+        position: fixed;
+        background:  #dfe2e7;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px 30px;
+    }
+
+    .mobile-header-title {
+        width: 90%;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-header-title h1 {
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0px 0px;
+        margin-right: 5px;
+    }
+
+
+    .mobile-header-title h2 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .mobile-header-title p{
+        margin: 0 5px;
+    }
+
+    .mobile-header a {
+        width: 4%;
+    }
+
+
+    @keyframes docSideNav {
+        from{
+            transform: translateX(-30vw)
+        }
+        to {
+            transform: translateX(0vw);
+        }
     }
 }

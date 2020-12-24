@@ -1,14 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Logo from '../../components/Logo/Logo'
+import {Header} from '../../components'
 import {NavLink} from 'react-router-dom'
 import Form2Landing from '../../assets/docs-img/form2-dashboard.png'
 
 const Docs = () => {
+
+    
+
+    const [isNavShow, setNavShow] = useState(false)
+
     return (
         <>
+        <div className="mobile-header">
+            <div className="mobile-header-title">
+                <h1>Category Title</h1>
+                <p>/</p>
+                <h2>Document Title</h2>
+            </div>
+              <a onClick={() => setNavShow(!isNavShow)} class="toggle nk-quick-nav-icon mr-n1" data-target="sideNav"><em class="icon ni ni-menu"></em></a>
+        </div>
         <div className="document-wrapper">
-            
-            <div className="side-nav">
+            <div className={`side-nav ${isNavShow ? "side-nav-mobile" : null}`}>
                 <Logo/>
                 <div className="side-menu-row">
                     <h2>GETTING STARTED</h2>
