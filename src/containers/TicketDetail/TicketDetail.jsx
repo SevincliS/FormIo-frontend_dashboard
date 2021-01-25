@@ -1,91 +1,112 @@
-import React from 'react';
+import React from "react";
+
+import { BodyWrapper, ContentWrapper, ContentBody, Block } from "../index";
 
 import {
-    BodyWrapper,
-    ContentWrapper,
-    ContentBody,
-    Block,
-} from '../index'
-
-import {
-    Header, 
-    Sidebar, 
-    ContentHeading,
-    TicketMessage,
-    Editor,
-} from '../../components'
-import HeadWrapper from '../Wrapper/HeadWrapper';
-import {Link} from 'react-router-dom'
-
-
-
+  Header,
+  Sidebar,
+  ContentHeading,
+  TicketMessage,
+  Editor,
+} from "../../components";
+import HeadWrapper from "../Wrapper/HeadWrapper";
+import { Link } from "react-router-dom";
+import { setUserAction } from "../../redux/actions/userActions";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+import { backendUrl } from "../../config";
+import { setTicketAction } from "../../redux/actions/ticketActions";
 
 class TicketDetail extends React.Component {
-
-    render(){
-        return (
-            <BodyWrapper>
-                    <Header/>
-                        <ContentWrapper>
-                            <Sidebar/>  
-                             <ContentBody>
-                             <HeadWrapper>
-                                <ContentHeading 
-                                title={"Request for approve payment"} 
-                                subtitle={
-                                <Link to="/tickets">
-                                    <a class="back-to" href=""><em class="icon ni ni-arrow-left"></em><span>My Tickets</span></a>
-                                </Link>
-                            }  
-                                        />
-                                </HeadWrapper>
-                                <Block>
-                                    <div class="ticket-info">
-                                            <ul class="ticket-meta">
-                                                <li class="ticket-id"><span>Ticket ID:</span> <strong>7565</strong></li>
-                                                <li class="ticket-date"><span>Submitted:</span> <strong>26 Jan 2020</strong></li>
-                                            </ul>
-                                            <div class="ticket-status">
-                                                <span class="badge badge-success">Open</span>
-                                            </div>
-                                        </div>
-                                    </Block>
-                                    <Block>
-                                    <div class="card card-bordered">
-                                        <div class="card-inner">
-                                            <div class="ticket-msgs">
-                                                <TicketMessage
-                                                role="Customer"
-                                                name="Kenneth Anderson"
-                                                shortName="KA"
-                                                message="Hello Sir,
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                                Best Regerds Kenneth Anderson"
-                                                date="Jan 26, 2020 6:00 AM"
-                                                />
-                                                 <TicketMessage
-                                                role="Support Team"
-                                                name="Barış Biber"
-                                                shortName="KA"
-                                                message="Hello Kenneth,
-                                                Thanks for contact us with your issues. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-                                                />
-                                                <Editor/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </Block>
-                                    
-                    </ContentBody>
-            </ContentWrapper>
-        </BodyWrapper>
-        )
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: props.ticket.messages || [],
+    };
+  }
+  renderMessages = () => {
+    const { messages } = this.props.ticket;
+    return messages.map((message) => (
+      <TicketMessage
+        role={message.role}
+        name={message.name}
+        shortName={message.shortName}
+        message={message.message}
+        date={message.date}
+      />
+    ));
+  };
+  render() {
+    const { ticket } = this.props;
+    return (
+      <BodyWrapper>
+        <Header />
+        <ContentWrapper>
+          <Sidebar />
+          <ContentBody>
+            <HeadWrapper>
+              <ContentHeading
+                title={ticket.subject}
+                subtitle={
+                  <Link to="/tickets">
+                    <a class="back-to" href="">
+                      <em class="icon ni ni-arrow-left"></em>
+                      <span>My Tickets</span>
+                    </a>
+                  </Link>
+                }
+              />
+            </HeadWrapper>
+            <Block>
+              <div class="ticket-info">
+                <ul class="ticket-meta">
+                  <li class="ticket-id">
+                    <span>Ticket ID:</span> <strong>{ticket.id}</strong>
+                  </li>
+                  <li class="ticket-date">
+                    <span>Submitted:</span> <strong>{ticket.date}</strong>
+                  </li>
+                </ul>
+                <div class="ticket-status">
+                  <span
+                    class={`badge ${
+                      ticket.status === "Close"
+                        ? "badge-light"
+                        : "badge-success"
+                    }`}
+                  >
+                    {ticket.status}
+                  </span>
+                </div>
+              </div>
+            </Block>
+            <Block>
+              <div class="card card-bordered">
+                <div class="card-inner">
+                  <div class="ticket-msgs">
+                    {this.renderMessages()}
+                    <Editor />
+                  </div>
+                </div>
+              </div>
+            </Block>
+          </ContentBody>
+        </ContentWrapper>
+      </BodyWrapper>
+    );
+  }
 }
-    
 
-export default TicketDetail
+const mapStateToProps = (state) => ({
+  user: state.user,
+  ticket: state.ticket,
+});
 
-
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUserAction(user)),
+  setTicket: (ticket) => dispatch(setTicketAction(ticket)),
+});
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TicketDetail)
+);

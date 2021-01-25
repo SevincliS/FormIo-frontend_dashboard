@@ -1,169 +1,125 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
-
-
-const Tickets = [
-    {
-        "id": "C506223",
-        "subject": "Request for approve payment",
-        "date": "26 Jan 2020",
-        "lastSeen": "27 Jan 2020 10:20am",
-        "status": "Open",
-        "isUnread": true,
-        "lastSeenTrack" : "Support Team",
-        "link": "/ticket-detail" 
-    },
-    {
-        "id": "C503095",
-        "subject": "Payment was rejected",
-        "date": "02 Dec 2019",
-        "lastSeen": "04 Dec 2019 04:45pm",
-        "status": "Close",
-        "isUnread": false,
-        "lastSeenTrack" : "User",
-        "link": "/ticket-detail" 
-    },
-    {
-        "id": "C502049",
-        "subject": "We cannot install on our server",
-        "date": "02 Nov 2019",
-        "lastSeen": "04 Nov 2019 04:45pm",
-        "status": "Open",
-        "isUnread": false,
-        "lastSeenTrack" : "User",
-        "link": "/ticket-detail"  
-    },
-    {
-        "id": "C502035",
-        "subject": "Support for website",
-        "date": "17 Oct 2019",
-        "lastSeen": "21 Oct 2019 04:45pm",
-        "status": "Close",
-        "isUnread": false,
-        "lastSeenTrack" : "Support Team",
-        "link": "/ticket-detail"  
-    },
-    {
-        "id": "C501783",
-        "subject": "We cannot install on our server",
-        "date": "02 Oct 2019",
-        "lastSeen": "07 Feb 2020 02:28pm",
-        "status": "Open",
-        "isUnread": true,
-        "lastSeenTrack" : "User",
-        "link": "/ticket-detail"  
-    },
-    {
-        "id": "C501624",
-        "subject": "Setup Local Payment Gateway",
-        "date": "01 Oct 2019",
-        "lastSeen": "04 Oct 2019 04:15pm",
-        "status": "Open",
-        "isUnread": false,
-        "lastSeenTrack" : "Technical Team",
-        "link": "/ticket-detail"  
-    },
-    {
-        "id": "C501605",
-        "subject": "Unable to set automated email response",
-        "date": "24 Sep 2019",
-        "lastSeen": "01 Oct 2019 02:29am",
-        "status": "Close",
-        "isUnread": false,
-        "lastSeenTrack" : "Support Team",
-        "link": "/ticket-detail"   
-    },
-    {
-        "id": "C501579",
-        "subject": "Setup Local Payment Gateway",
-        "date": "17 Sep 2019",
-        "lastSeen": "29 Sep 2019 06:17am",
-        "status": "Close",
-        "isUnread": false,
-        "lastSeenTrack" : "Technical Team",
-        "link": "/ticket-detail"  
-    },
-
-]
-
-
-const TicketsRow = Tickets.map((ticket) => {
-    return (
-        
-        <tr class={`tb-ticket-item ${ticket.isUnread ? `is-unread` : null}`}>
-        <td class="tb-ticket-id">
-        <Link to={ticket.link}>
-            <a href="">{ticket.id}</a>
-        </Link>
-            </td>
-        <td class="tb-ticket-desc">
-        <Link to={ticket.link}>
-            <a href=""><span class="title">{ticket.subject}</span></a>
-        </Link>
-        </td>
-        <td class="tb-ticket-date tb-col-md">
-            <span class="date">{ticket.date}</span>
-        </td>
-        <td class="tb-ticket-seen tb-col-md">
-            <span class="date-last"><em class={`icon-avatar ${ticket.lastSeenTrack === "Support Team" ? "bg-danger-dim" : ticket.lastSeenTrack === "Technical Team" ? "bg-warning-dim" : null } icon ni ni-user-fill nk-tooltip`} title={ticket.lastSeenTrack}></em> {ticket.lastSeen}<span class="d-none d-xl-inline">10:20am</span></span>
-        </td>
-        <td class="tb-ticket-status">
-            <span class={`badge ${ticket.status === "Open" ? `badge-success` : `badge-light`}`}>{ticket.status}</span>
-        </td>
-        <Link to={ticket.link}>
-        <td class="tb-ticket-action">
-            <a href="" class="btn btn-icon btn-trigger">
-                <em class="icon ni ni-chevron-right"></em>
-            </a>
-        </td>
-        </Link>
-    </tr>
-    
-    
-    )
-
-})
-  
-     
+import React from "react";
+import { Link } from "react-router-dom";
+import { setUserAction } from "../../redux/actions/userActions";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+import { backendUrl } from "../../config";
+import { setTicketAction } from "../../redux/actions/ticketActions";
 
 class TicketTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tickets: props.user.tickets || [],
+    };
+  }
 
-    render(){
-        return (
-            <table class="table table-tickets">
-            <thead class="tb-ticket-head">
-                <tr class="tb-ticket-title">
-                    <th class="tb-ticket-id"><span>Ticket</span></th>
-                    <th class="tb-ticket-desc">
-                        <span>Subject</span>
-                    </th>
-                    <th class="tb-ticket-date tb-col-md">
-                        <span>Submited</span>
-                    </th>
-                    <th class="tb-ticket-seen tb-col-md">
-                        <span>Last Seen</span>
-                    </th>
-                    <th class="tb-ticket-status">
-                        <span>Status</span>
-                    </th>
-                    <th class="tb-ticket-action"> &nbsp; </th>
-                </tr>
-            </thead>
-            <tbody class="tb-ticket-body">
-           
-            {TicketsRow}
-            
-                
-            </tbody>
-        </table>     
-    
-    
-        )
-    }
+  renderTicketRows = () => {
+    const { tickets } = this.state;
+    const { setTicket } = this.props;
+    return tickets.map((ticket) => (
+      <tr class={`tb-ticket-item ${ticket.isUnread ? `is-unread` : null}`}>
+        <td class="tb-ticket-id">
+          <Link
+            to="/ticket-detail"
+            onClick={() => {
+              setTicket(ticket);
+            }}
+          >
+            <a href="">{ticket.id}</a>
+          </Link>
+        </td>
+        <td class="tb-ticket-desc">
+          <Link
+            to="/ticket-detail"
+            onClick={() => {
+              setTicket(ticket);
+            }}
+          >
+            <a href="">
+              <span class="title">{ticket.subject}</span>
+            </a>
+          </Link>
+        </td>
+        <td class="tb-ticket-date tb-col-md">
+          <span class="date">{ticket.date}</span>
+        </td>
+        <td class="tb-ticket-seen tb-col-md">
+          <span class="date-last">
+            <em
+              class={`icon-avatar ${
+                ticket.lastSeenTrack === "Support Team"
+                  ? "bg-danger-dim"
+                  : ticket.lastSeenTrack === "Technical Team"
+                  ? "bg-warning-dim"
+                  : null
+              } icon ni ni-user-fill nk-tooltip`}
+              title={ticket.lastSeenTrack}
+            ></em>{" "}
+            {ticket.lastSeen}
+          </span>
+        </td>
+        <td class="tb-ticket-status">
+          <span
+            class={`badge ${
+              ticket.status === "Open" ? `badge-success` : `badge-light`
+            }`}
+          >
+            {ticket.status}
+          </span>
+        </td>
+        <Link
+          to="/ticket-detail"
+          onClick={() => {
+            setTicket(ticket);
+          }}
+        >
+          <td class="tb-ticket-action">
+            <a href="" class="btn btn-icon btn-trigger">
+              <em class="icon ni ni-chevron-right"></em>
+            </a>
+          </td>
+        </Link>
+      </tr>
+    ));
+  };
+  render() {
+    return (
+      <table class="table table-tickets">
+        <thead class="tb-ticket-head">
+          <tr class="tb-ticket-title">
+            <th class="tb-ticket-id">
+              <span>Ticket</span>
+            </th>
+            <th class="tb-ticket-desc">
+              <span>Subject</span>
+            </th>
+            <th class="tb-ticket-date tb-col-md">
+              <span>Submited</span>
+            </th>
+            <th class="tb-ticket-seen tb-col-md">
+              <span>Last Seen</span>
+            </th>
+            <th class="tb-ticket-status">
+              <span>Status</span>
+            </th>
+            <th class="tb-ticket-action"> &nbsp; </th>
+          </tr>
+        </thead>
+        <tbody class="tb-ticket-body">{this.renderTicketRows()}</tbody>
+      </table>
+    );
+  }
 }
-    
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-export default TicketTable
-
-
-
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUserAction(user)),
+  setTicket: (ticket) => dispatch(setTicketAction(ticket)),
+});
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TicketTable)
+);

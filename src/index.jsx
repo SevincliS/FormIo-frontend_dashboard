@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import '../src/assets/css/index.scss';
-import  { 
-  Login, 
+import React from "react";
+import ReactDOM from "react-dom";
+import "../src/assets/css/index.scss";
+import {
+  Login,
   Register,
   ResetPassword,
   ResetSuccess,
-  Dashboard, 
+  Dashboard,
   MyForms,
   PaymentHistory,
   MySubscription,
@@ -22,20 +22,14 @@ import  {
   InvoiceDetail,
   InvoicePrint,
   Docs,
-} from './containers'
-import '../src/assets/theme-assets/css/dashlite.css'
-import '../src/assets/theme-assets/css/theme.css'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-import {createStore} from 'redux'
-import allReducers from './redux/reducer'
-import {Provider} from 'react-redux'
-
-const store = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-
-
+} from "./containers";
+import "../src/assets/theme-assets/css/dashlite.css";
+import "../src/assets/theme-assets/css/theme.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import dotenv from "dotenv";
 
 class Index extends React.Component {
   render() {
@@ -43,100 +37,87 @@ class Index extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Dashboard/>
+            <Dashboard />
           </Route>
           <Route exact path="/my-profile">
-            <MyProfile
-            subpage="Personal"
-            />
+            <MyProfile subpage="Personal" />
           </Route>
           <Route exact path="/my-profile/billing">
-            <MyProfile
-            subpage="Billing"
-            />
+            <MyProfile subpage="Billing" />
           </Route>
           <Route exact path="/my-profile/settings">
-            <MyProfile
-            subpage="Settings"
-            />
+            <MyProfile subpage="Settings" />
           </Route>
           <Route exact path="/my-profile/notifications">
-            <MyProfile
-            subpage="Notification"
-            />
+            <MyProfile subpage="Notification" />
           </Route>
           <Route exact path="/my-subscription">
-            <MySubscription/>
+            <MySubscription />
           </Route>
           <Route exact path="/my-forms">
-            <MyForms/>
+            <MyForms />
           </Route>
           <Route exact path="/payment-history">
-            <PaymentHistory/>
+            <PaymentHistory />
           </Route>
           <Route exact path="/manage-team">
-            <ManageTeam/>
+            <ManageTeam />
           </Route>
           <Route exact path="/download">
-            <Download/>
+            <Download />
           </Route>
           <Route exact path="/pricing">
-            <Pricing/>
+            <Pricing />
           </Route>
           <Route exact path="/invoices">
-            <Invoices/>
+            <Invoices />
           </Route>
           <Route exact path="/tickets">
-            <Tickets/>
+            <Tickets />
           </Route>
           <Route exact path="/subscription-detail">
-            <SubscriptionDetail/>
+            <SubscriptionDetail />
           </Route>
           <Route exact path="/create-form">
-            <CreateForm/>
+            <CreateForm />
           </Route>
           <Route exact path="/ticket-detail">
-            <TicketDetail/>
+            <TicketDetail />
           </Route>
           <Route exact path="/invoice-detail">
-            <InvoiceDetail/>
+            <InvoiceDetail />
           </Route>
           <Route exact path="/invoice-print">
-            <InvoicePrint/>
+            <InvoicePrint />
           </Route>
 
           <Route exact path="/login">
-            <Login/>
+            <Login />
           </Route>
           <Route exact path="/register">
-            <Register/>
+            <Register />
           </Route>
           <Route exact path="/reset-password">
-            <ResetPassword/>
+            <ResetPassword />
           </Route>
           <Route exact path="/reset-success">
-            <ResetSuccess/>
+            <ResetSuccess />
           </Route>
 
           <Route exact path="/docs">
-            <Docs/>
+            <Docs />
           </Route>
-
         </Switch>
       </Router>
-    )
+    );
   }
 }
-
-
-
-
-
+dotenv.config();
 ReactDOM.render(
   <Provider store={store}>
-  <Index/>
-  </Provider>
-  ,
-  document.getElementById('root')
+    <PersistGate loading={null} persistor={persistor}>
+      <Index />
+    </PersistGate>
+  </Provider>,
+  document.getElementById("root")
 );
-
